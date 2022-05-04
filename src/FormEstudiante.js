@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import "./Estudiante.css";
+import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
+import Button from "react-bootstrap/Button";
 
 export default class FormEstudiante extends Component {
   constructor(props) {
@@ -70,36 +73,37 @@ export default class FormEstudiante extends Component {
   render() {
     return (
       <div>
-        <form>
-          <select name="curso" onChange={this.handleChange}>
-            {this.state.cursos.map((l) => (
-              <option value={l.id}>{l.curso}</option>
-            ))}
-          </select>
-          <label>
-            Nombre:
-            <input
+        <Form>
+          <Form.Group className="mb-3">
+            <Form.Label>Cursos</Form.Label>
+            <Form.Control name="curso" onChange={this.handleChange} as="select">
+              {this.state.cursos.map((l) => (
+                <option value={l.id}>{l.curso}</option>
+              ))}
+            </Form.Control>
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Nombre</Form.Label>
+            <Form.Control
               type="text"
               name="nombre"
               onChange={this.handleChange}
               value={this.state.form.nombre}
             />
-          </label>
-          <label>
-            Apellido:
-            <input
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Apellido</Form.Label>
+            <Form.Control
               type="text"
               name="apellido"
               onChange={this.handleChange}
               value={this.state.form.apellido}
             />
-          </label>
-
-          <button onClick={this.handleSubmit} type="submit">
+          </Form.Group>
+          <Button onClick={this.handleSubmit} type="submit">
             Enviar
-          </button>
-        </form>
-        <p>{this.state.resultado}</p>
+          </Button>
+        </Form>
       </div>
     );
   }
