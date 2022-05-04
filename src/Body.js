@@ -19,9 +19,6 @@ export default class Body extends Component {
         {this.props.itemClicked === 1 && <FormEstudiante />}
         {this.props.itemClicked === 2 && <Cursos />}
         {this.props.itemClicked === 3 && <listarEstudiantes />}
-        {/* {this.props.itemClicked === 2 && (
-          <Personas inputValue={this.props.inputValue} />
-        )} */}
       </Container>
     );
   }
