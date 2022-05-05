@@ -8,7 +8,7 @@ export default class Cursos extends Component {
   constructor(props) {
     super(props);
     this.listarCursos = this.listarCursos.bind(this);
-    //  this.listarCursosDeX = this.listarCursosDeX.bind(this);
+    this.listarCursosDeX = this.listarCursosDeX.bind(this);
     this.limpiar = this.limpiar.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -62,27 +62,25 @@ export default class Cursos extends Component {
     }));
   }
 
-  //   listarCursosDeX(inputValue) {
-  //     fetch("http://localhost:1234/estudiantes?apellido=" + inputValue)
-  //       .then((resp) => resp.json())
-  //       .then((json) => {
-  //         this.setState({
-  //           cursos: json.personas,
-  //           resultado: json.result,
-  //         });
-  //       });
-  //   }
+  listarCursosDeX(inputValue) {
+    console.log(inputValue);
+    fetch("http://localhost:1234/estudiantes?apellido=" + inputValue)
+      .then((resp) => resp.json())
+      .then((json) => {
+        this.setState({
+          cursos: json.personas,
+          resultado: json.result,
+        });
+      });
+  }
 
-  //   componentDidUpdate(prevProps, prevState) {
-  //     if (prevProps.inputValue !== this.props.inputValue)
-  //       this.listarCursosDeX(this.props.inputValue);
-  //   }
-
-  //   componentDidMount() {
-  //     this.listarCursosDeX(this.props.inputValue);
-  //   }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.inputValue !== this.props.inputValue)
+      this.listarCursosDeX(this.props.inputValue);
+  }
 
   componentDidMount() {
+    this.listarCursosDeX(this.props.inputValue);
     fetch("http://localhost:1234/localidades")
       .then((r) => r.json())
       .then((json) => {
